@@ -19,5 +19,3 @@ ENV/
 env.bak/
 venv.bak/
 
-# Config file for Storing Telegram APIKEY
-*config*
