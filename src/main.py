@@ -68,7 +68,7 @@ try:
 
         if update.callback_query.data:
             out = videos[int(update.callback_query.data) - 1].download(output_path=destination)
-            context.bot.send_document(chat_id, document=open(f'{out}', 'rb'), filename=f'{out}')
+            context.bot.send_document(chat_id, document=open(f'{out}', 'rb'), filename=f'{out}',timeout=1024)
             os.remove(out)
 
     def audio(update: Update, context: CallbackContext):
@@ -93,7 +93,7 @@ try:
             final = (base + '.mp3')
 
             temp.close()
-            context.bot.send_document(chat_id, document=open(f'{os.path.realpath(final)}', 'rb'), filename=f'{os.path.realpath(final)}')
+            context.bot.send_document(chat_id, document=open(f'{os.path.realpath(final)}', 'rb'), filename=f'{os.path.realpath(final)}',timeout=1024)
             os.remove(final)
         except subprocess.CalledProcessError:
             print('ffmpeg are not installed')
