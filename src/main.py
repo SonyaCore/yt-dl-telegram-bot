@@ -6,10 +6,13 @@ def sort_resolutions(link):
     "sort stream order"
     global video_resolutions
     global videos
+    
+    # Progressive mode to filter videos with audio.
+    videostream = link.streams.filter(progressive=True)
     video_resolutions = []
     videos = []
 
-    for stream in link.streams.order_by('resolution'):
+    for stream in videostream:
         video_resolutions.append(stream)
         videos.append(stream)
 
